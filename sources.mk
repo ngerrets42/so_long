@@ -1,0 +1,25 @@
+SOURCES :=	src/game_update.c \
+	src/dino.c \
+	src/ft_lstmap.c \
+	src/map.c \
+	src/ft_lstdelone.c \
+	src/img2.c \
+	src/ft_lstadd_back.c \
+	src/sprite.c \
+	src/itoa.c \
+	src/ft_lstiter.c \
+	src/game_init.c \
+	src/ft_lstclear.c \
+	src/map_check.c \
+	src/ft_lstadd_front.c \
+	src/ft_lstnew.c \
+	src/enemy2.c \
+	src/ft_lstlast.c \
+	src/enemy.c \
+	src/game.c \
+	src/hooks.c \
+	src/img.c \
+	src/str.c \
+	src/main.c \
+	src/sprite_list.c \
+	src/ft_lstsize.c \

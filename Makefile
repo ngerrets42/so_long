@@ -6,7 +6,7 @@
 #    By: ngerrets <ngerrets@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/07/15 14:47:03 by ngerrets      #+#    #+#                  #
-#    Updated: 2021/07/29 17:40:31 by ngerrets      ########   odam.nl          #
+#    Updated: 2021/08/02 10:37:30 by ngerrets      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,12 @@ OBJECTS_DIRECTORY ?= objects
 BINARIES_DIRECTORY ?= .
 
 # Don't manually edit:
+SOURCES :=
+include sources.mk
+
 HEADERS	:= $(shell find $(HEADER_DIRECTORY) -type f -name *.h)
-SOURCES := $(shell find $(SOURCE_DIRECTORY) -type f -name *.c)
-OBJECTS := $(patsubst $(SOURCE_DIRECTORY)/%,$(OBJECTS_DIRECTORY)/%,$(SOURCES:.c=.o))
 INCLUDES := $(patsubst %,-I%,$(dir $(HEADERS)))
+OBJECTS := $(patsubst %,$(OBJECTS_DIRECTORY)/%,$(SOURCES:.c=.o))
 
 # OS specific rules
 ifeq ($(shell uname),Darwin)
@@ -54,7 +56,7 @@ $(BINARIES_DIRECTORY):
 	@mkdir -p $(BINARIES_DIRECTORY)
 
 # Compile files
-$(OBJECTS_DIRECTORY)/%.o: $(SOURCE_DIRECTORY)/%.c $(HEADERS)
+$(OBJECTS_DIRECTORY)/%.o: %.c $(HEADERS)
 	@echo "Compiling: $@"
 	@mkdir -p $(@D)
 	@$(CC) $(COMPILE_FLAGS) $(INCLUDES) -c -o $@ $<
