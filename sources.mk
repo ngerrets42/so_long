@@ -1,25 +1,25 @@
-SOURCES :=	src/game_update.c \
-	src/dino.c \
-	src/ft_lstmap.c \
-	src/map.c \
-	src/ft_lstdelone.c \
-	src/img2.c \
-	src/ft_lstadd_back.c \
-	src/sprite.c \
-	src/itoa.c \
-	src/ft_lstiter.c \
-	src/game_init.c \
-	src/ft_lstclear.c \
-	src/map_check.c \
-	src/ft_lstadd_front.c \
-	src/ft_lstnew.c \
-	src/enemy2.c \
-	src/ft_lstlast.c \
+SOURCES :=	src/dino.c \
 	src/enemy.c \
+	src/enemy2.c \
 	src/game.c \
+	src/game_init.c \
+	src/game_update.c \
 	src/hooks.c \
 	src/img.c \
-	src/str.c \
+	src/img2.c \
+	src/itoa.c \
+	src/list/ft_lstadd_back.c \
+	src/list/ft_lstadd_front.c \
+	src/list/ft_lstclear.c \
+	src/list/ft_lstdelone.c \
+	src/list/ft_lstiter.c \
+	src/list/ft_lstlast.c \
+	src/list/ft_lstmap.c \
+	src/list/ft_lstnew.c \
+	src/list/ft_lstsize.c \
 	src/main.c \
+	src/map.c \
+	src/map_check.c \
+	src/sprite.c \
 	src/sprite_list.c \
-	src/ft_lstsize.c \
+	src/str.c \
