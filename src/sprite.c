@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/23 14:06:03 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/07/06 20:31:45 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/11 15:50:31 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_spr	*sprite_create(t_img *img)
 		return (NULL);
 	spr->images[0] = img;
 	spr->image_count = 1;
-	spr->ani_speed = SPR_DEFAULT_ANI_SPEED;
+	spr->ani_speed = SPR_DEFAULT_ANI_SPEED * FPS_MULTIPLIER;
 	return (spr);
 }
 

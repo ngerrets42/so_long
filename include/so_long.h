@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/23 11:24:55 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/07/06 20:43:03 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/11 15:50:41 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,12 @@
 # include <stddef.h>
 # include <stdlib.h>
 
+# ifndef FPS_MULTIPLIER
+#  define FPS_MULTIPLIER 1
+# endif
+
 # define SPR_DEFAULT_ANI_SPEED 0.001
+# define ENEMY_SPEED 0.0003
 # define BACKGROUND_COLOR 0x000000
 
 typedef enum e_sprtype

@@ -6,13 +6,11 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/06 17:53:39 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/07/06 20:43:30 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/11 15:49:53 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-#define ENEMY_SPEED 0.0003
 
 static t_enemy	*enemy_new(int x, int y, float hspeed, float vspeed)
 {
@@ -50,10 +48,12 @@ t_list	*enemies_create(t_game *game)
 		{
 			if (game->map->data[y][x] == MAP_ENEMY_H)
 				ft_lstadd_front(&list,
-					ft_lstnew(enemy_new(x, y, ENEMY_SPEED, 0)));
+					ft_lstnew(enemy_new(x, y,
+							ENEMY_SPEED * FPS_MULTIPLIER, 0)));
 			else if (game->map->data[y][x] == MAP_ENEMY_V)
 				ft_lstadd_front(&list,
-					ft_lstnew(enemy_new(x, y, 0, ENEMY_SPEED)));
+					ft_lstnew(enemy_new(x, y, 0,
+							ENEMY_SPEED * FPS_MULTIPLIER)));
 			x++;
 		}
 		y++;

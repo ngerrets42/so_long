@@ -6,12 +6,15 @@
 #    By: ngerrets <ngerrets@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/07/15 14:47:03 by ngerrets      #+#    #+#                  #
-#    Updated: 2021/08/11 15:12:23 by ngerrets      ########   odam.nl          #
+#    Updated: 2021/08/11 15:51:10 by ngerrets      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 # For now this is the default Makefile I use for C projects
 # Manually edit:
+
+FPS_MULTIPLIER := 1
+
 NAME := so_long
 COMPILE_FLAGS ?= -Wall -Wextra -Werror
 LINKING_FLAGS ?= -Llib/get_next_line -lgnl
@@ -66,7 +69,7 @@ $(BINARIES_DIRECTORY):
 $(OBJECTS_DIRECTORY)/%.o: %.c $(HEADERS)
 	@echo "Compiling: $<"
 	@mkdir -p $(@D)
-	@$(CC) $(COMPILE_FLAGS) $(INCLUDES) -c -o $@ $<
+	@$(CC) -DFPS_MULTIPLIER=$(FPS_MULTIPLIER) $(COMPILE_FLAGS) $(INCLUDES) -c -o $@ $<
 
 # Clean objects
 clean: cleandeps
@@ -102,4 +105,4 @@ print:
 # In case of bonus
 bonus: all
 
-.PHONY: all dependencies clean cleandeps fclean re run print compile bonus
+.PHONY: all dependencies clean cleandeps fclean re run print bonus
