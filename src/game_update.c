@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/06 20:21:31 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/07/06 20:21:49 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/11 16:14:54 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ void	game_update_enemies(t_game *game)
 	enemy = game->enemies;
 	while (enemy != NULL)
 	{
+		if (enemy->content == NULL)
+		{
+			put(MSG_ERROR_BAD_MALLOC, NULL);
+			exit(1);
+		}
 		enemy_update(game, (t_enemy *)enemy->content);
 		enemy = enemy->next;
 	}

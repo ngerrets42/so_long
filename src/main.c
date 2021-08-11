@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/23 12:10:19 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/11 15:54:58 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/11 16:04:35 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static t_map	*parse_map(char *fname)
 	if (i < 4 || fname[i - 1] != 'r' || fname[i - 2] != 'e'
 		|| fname[i - 3] != 'b' || fname[i - 4] != '.')
 	{
-		put("Error\n- Bad file extension! Use .ber", NULL);
+		put(MSG_ERROR_BAD_FILE_EXTENSION, NULL);
 		return (NULL);
 	}
 	map = map_get_from_file(fname);

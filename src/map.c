@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/23 11:41:18 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/07/06 21:03:40 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/11 16:06:17 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	map_add_line(t_map **map, char *line)
 	new_data = malloc(((*map)->height + 1) * sizeof(char *));
 	if (new_data == NULL || ft_strlen(line) != (*map)->width)
 	{
-		put("Error\n- Map needs to be a rectangle. (or mem-err)", NULL);
+		put(MSG_ERROR_NOT_RECTANGLE_OR_BAD_MALLOC, NULL);
 		free(new_data);
 		bad_map_free(*map);
 		free(line);

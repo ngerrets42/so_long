@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/29 10:35:40 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/07/06 20:24:17 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/11 16:13:06 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,11 @@ void	game_draw_enemies(t_game *game)
 	enemy = game->enemies;
 	while (enemy != NULL)
 	{
+		if (enemy->content == NULL)
+		{
+			put(MSG_ERROR_BAD_MALLOC, NULL);
+			exit(1);
+		}
 		enemy_draw(game, (t_enemy *)enemy->content);
 		enemy = enemy->next;
 	}

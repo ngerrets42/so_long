@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/29 11:23:08 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/07/06 21:03:34 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/11 16:03:45 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	map_check_player_and_exit(t_map *map)
 	collectible_count = map_count(map, MAP_COLLECTIBLE);
 	if (player_count != 1 || exit_count != 1 || collectible_count < 1)
 	{
-		put("Error\n- Map needs ONE player, ONE exit and 1+ apples.", NULL);
+		put(MSG_ERROR_REQUIRE_ESSENTIALS, NULL);
 		return (0);
 	}
 	return (1);
@@ -53,7 +53,7 @@ static int	map_check_walls(t_map *map)
 			if ((x == 0 || x == map->width - 1 || y == 0
 					|| y == map->height - 1) && (map->data[y][x] != MAP_WALL))
 			{
-				put("Error\n- Map needs to be surrounded by walls.", NULL);
+				put(MSG_ERROR_BAD_WALLS, NULL);
 				return (0);
 			}
 			x++;
@@ -76,7 +76,7 @@ int	map_check_map(t_map *map)
 		{
 			if (!map_char_islegal(map->data[y][x]))
 			{
-				put("Error\n- Illegal characters in map.", NULL);
+				put(MSG_ERROR_ILLEGAL_CHARS, NULL);
 				return (0);
 			}
 			x++;
