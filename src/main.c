@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/23 12:10:19 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/07/06 20:48:45 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/11 15:54:58 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ static t_map	*parse_map(char *fname)
 	{
 		if (map != NULL)
 			map_destroy(map);
-		put("Error\n- Couldn't parse the map. Check if the file exists.", NULL);
+		else
+			put("Error\n- Couldn't parse the map. Check if the file exists.", NULL);
 		return (NULL);
 	}
 	return (map);
