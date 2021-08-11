@@ -6,7 +6,7 @@
 #    By: ngerrets <ngerrets@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/07/15 14:47:03 by ngerrets      #+#    #+#                  #
-#    Updated: 2021/08/11 14:38:21 by ngerrets      ########   odam.nl          #
+#    Updated: 2021/08/11 15:12:23 by ngerrets      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ include sources.mk
 HEADERS	:= $(shell find $(HEADER_DIRECTORY) -type f -name *.h)
 INCLUDES := $(patsubst %,-I%,$(dir $(HEADERS)))
 OBJECTS := $(patsubst %,$(OBJECTS_DIRECTORY)/%,$(SOURCES:.c=.o))
+NAME := $(BINARIES_DIRECTORY)/$(NAME)
 
 # OS specific rules
 ifeq ($(shell uname),Darwin)
@@ -42,14 +43,14 @@ else
 endif
 
 # Default make-rule. Compile and link files.
-all: $(BINARIES_DIRECTORY)/$(NAME)
+all: $(NAME)
 
 # Link files
-$(BINARIES_DIRECTORY)/$(NAME): $(BINARIES_DIRECTORY) $(HEADERS) $(OBJECTS)
+$(NAME): $(BINARIES_DIRECTORY) $(HEADERS) $(OBJECTS)
 	@echo "\nBuilding dependencies..."
 	@$(MAKE) dependencies
 	@echo "\nLinking files..."
-	@$(CC) $(OBJECTS) -o $(BINARIES_DIRECTORY)/$(NAME) $(LINKING_FLAGS)
+	@$(CC) $(OBJECTS) -o $(NAME) $(LINKING_FLAGS)
 	@echo "Done!"
 
 dependencies:
@@ -80,7 +81,7 @@ cleandeps:
 
 # Clean objects and binaries
 fclean: clean
-	@rm -f $(BINARIES_DIRECTORY)/$(NAME)
+	@rm -f $(NAME)
 	@rm -f *.a
 	@rm -f *.dylib
 	@echo "Binaries cleaned."
@@ -91,7 +92,7 @@ re: fclean all
 # Compile, link and run project
 run: all
 	@echo "Running..."
-	@$(BINARIES_DIRECTORY)/$(NAME)
+	@./$(NAME)
 
 # Prints header and source files
 print:
