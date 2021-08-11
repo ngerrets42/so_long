@@ -6,7 +6,7 @@
 #    By: ngerrets <ngerrets@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/07/15 14:47:03 by ngerrets      #+#    #+#                  #
-#    Updated: 2021/08/02 10:37:30 by ngerrets      ########   odam.nl          #
+#    Updated: 2021/08/11 14:28:28 by ngerrets      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,24 +32,30 @@ OBJECTS := $(patsubst %,$(OBJECTS_DIRECTORY)/%,$(SOURCES:.c=.o))
 # OS specific rules
 ifeq ($(shell uname),Darwin)
 	MLXLIB := lib/mlx_mac
-	LINKING_FLAGS += -Llib/mlx_mac -lmlx -framework OpenGL -framework AppKit
+	LINKING_FLAGS += -Llib/mlx_mac -lmlx \
+		-framework OpenGL -framework AppKit
+	LIB := lib/mlx_mac/libmlx.dylib
 else
 	MLXLIB := lib/mlx_linux
 	LINKING_FLAGS += -Llib/mlx_linux -lmlx -lXext -lX11 -lm
+	LIB := lib/mlx_linux/*.a
 endif
 
 # Default make-rule. Compile and link files.
-all: dependencies $(BINARIES_DIRECTORY)/$(NAME)
-
-dependencies:
-	$(MAKE) -C lib/get_next_line
-	$(MAKE) -C $(MLXLIB)
+all: $(BINARIES_DIRECTORY)/$(NAME)
 
 # Link files
 $(BINARIES_DIRECTORY)/$(NAME): $(BINARIES_DIRECTORY) $(HEADERS) $(OBJECTS)
+	@echo "\nBuilding dependencies..."
+	@$(MAKE) dependencies
 	@echo "\nLinking files..."
-	@$(CC) $(OBJECTS) -o $(BINARIES_DIRECTORY)/$(NAME) $(LINKING_FLAGS) 
+	@$(CC) $(OBJECTS) -o $(BINARIES_DIRECTORY)/$(NAME) $(LINKING_FLAGS)
 	@echo "Done!"
+
+dependencies:
+	@$(MAKE) -C lib/get_next_line
+	@$(MAKE) -C $(MLXLIB)
+	@cp $(LIB) .
 
 # Create binaries directory
 $(BINARIES_DIRECTORY):
@@ -57,22 +63,26 @@ $(BINARIES_DIRECTORY):
 
 # Compile files
 $(OBJECTS_DIRECTORY)/%.o: %.c $(HEADERS)
-	@echo "Compiling: $@"
+	@echo "Compiling: $<"
 	@mkdir -p $(@D)
 	@$(CC) $(COMPILE_FLAGS) $(INCLUDES) -c -o $@ $<
 
 # Clean objects
 clean: cleandeps
+	@echo "Cleaning objects..."
 	@rm -Rf $(OBJECTS_DIRECTORY)
 	@echo "Objects cleaned."
 
 cleandeps:
-	$(MAKE) -C lib/get_next_line clean
-	$(MAKE) -C $(MLXLIB) clean
+	@echo "Cleaning dependencies..."
+	@$(MAKE) -C lib/get_next_line clean
+	@$(MAKE) -C $(MLXLIB) clean
 
 # Clean objects and binaries
 fclean: clean
 	@rm -f $(BINARIES_DIRECTORY)/$(NAME)
+	@rm -f *.a
+	@rm -f *.dylib
 	@echo "Binaries cleaned."
 
 # Clean, recompile and relink project
