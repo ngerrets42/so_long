@@ -6,14 +6,14 @@
 #    By: ngerrets <ngerrets@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/07/15 14:47:03 by ngerrets      #+#    #+#                  #
-#    Updated: 2021/08/11 14:28:28 by ngerrets      ########   odam.nl          #
+#    Updated: 2021/08/11 14:38:21 by ngerrets      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 # For now this is the default Makefile I use for C projects
 # Manually edit:
 NAME := so_long
-COMPILE_FLAGS ?= -Wall -Wextra -c -g
+COMPILE_FLAGS ?= -Wall -Wextra -Werror
 LINKING_FLAGS ?= -Llib/get_next_line -lgnl
 LIBRARIES ?=
 SOURCE_DIRECTORY ?= src
