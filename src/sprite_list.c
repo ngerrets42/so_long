@@ -6,12 +6,16 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/29 13:02:05 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/07/06 20:23:27 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/18 17:02:11 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/*
+**	Hardcoded list of sprites used. enums are used to connect the sprite-
+**	resource to the appropriate "entities".
+*/
 t_spr	**sprite_get_list(t_game *game)
 {
 	t_spr	**sprites;

@@ -6,12 +6,15 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/06 20:19:32 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/11 16:15:42 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/18 16:49:23 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/*
+**	Create the window and the image for the window buffer.
+*/
 static void	game_initialize_window(t_game *game, t_map *map)
 {
 	game->window_w = MAP_TILE_W * map->width;
@@ -30,6 +33,9 @@ static void	game_initialize_window(t_game *game, t_map *map)
 		game = NULL;
 }
 
+/*
+**	Allocate the game struct and initialize mlx.
+*/
 t_game	*game_initialize_mlx(t_map *map)
 {
 	t_game	*game;
@@ -54,6 +60,10 @@ t_game	*game_initialize_mlx(t_map *map)
 	return (game);
 }
 
+/*
+**	This functions holds a static variable designed to point towards the
+**	game struct.
+*/
 t_game	*game_get(t_game *game)
 {
 	static t_game	*game_struct = NULL;
@@ -63,6 +73,9 @@ t_game	*game_get(t_game *game)
 	return (game_struct);
 }
 
+/*
+**	Create all the entities (player and enemies).
+*/
 void	game_init_entities(t_game *game)
 {
 	game->dino = dino_create(game);

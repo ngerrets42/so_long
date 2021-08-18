@@ -6,12 +6,15 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/06 17:53:39 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/11 16:08:41 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/18 16:46:42 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/*
+**	Allocate and initialze an enemy struct.
+*/
 static t_enemy	*enemy_new(int x, int y, float hspeed, float vspeed)
 {
 	t_enemy	*enemy;
@@ -33,6 +36,9 @@ static t_enemy	*enemy_new(int x, int y, float hspeed, float vspeed)
 	return (enemy);
 }
 
+/*
+**	Goes through the map and creates an enemy for every corresponding position.
+*/
 t_list	*enemies_create(t_game *game)
 {
 	t_list	*list;
@@ -61,6 +67,10 @@ t_list	*enemies_create(t_game *game)
 	return (list);
 }
 
+/*
+**	Change the direction if there is a wall ahead. Flips either the hspeed or
+**	the vspeed.
+*/
 static void	enemy_change_direction(t_game *game, t_enemy *enemy)
 {
 	int	sign;
@@ -82,6 +92,9 @@ static void	enemy_change_direction(t_game *game, t_enemy *enemy)
 	}
 }
 
+/*
+**	Updates the animations progress and selects the correct sprite frame.
+*/
 static void	enemy_animate(t_game *game, t_enemy *enemy)
 {
 	enemy->ani_progress += enemy->spr->ani_speed;
@@ -95,6 +108,10 @@ static void	enemy_animate(t_game *game, t_enemy *enemy)
 	}
 }
 
+/*
+**	Enemy logic executed every loop. Performs collision check with player
+**	as well as movement and updating animation.
+*/
 void	enemy_update(t_game *game, t_enemy *enemy)
 {
 	enemy_change_direction(game, enemy);

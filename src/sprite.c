@@ -6,12 +6,15 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/23 14:06:03 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/11 15:50:31 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/18 17:03:21 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/*
+**	Allocate and initialize for a sprite created with given img.
+*/
 t_spr	*sprite_create(t_img *img)
 {
 	t_spr	*spr;
@@ -28,6 +31,9 @@ t_spr	*sprite_create(t_img *img)
 	return (spr);
 }
 
+/*
+**	Add given img to given spr
+*/
 void	sprite_add_img(t_spr *spr, t_img *img)
 {
 	t_img	**new_images;
@@ -53,6 +59,9 @@ void	sprite_add_img(t_spr *spr, t_img *img)
 	spr->images = new_images;
 }
 
+/*
+**	Create a sprite from a file.
+*/
 t_spr	*sprite_from_file(t_game *game, char *fname)
 {
 	t_spr	*spr;

@@ -6,13 +6,16 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/29 10:59:09 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/06/29 16:14:20 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/18 16:54:39 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "keycodes.h"
 
+/*
+**	Key pressed hook. Used to exit the game (esc) or move the player (wasd).
+*/
 int	hook_key_pressed(int key, t_game *game)
 {
 	if (key == KEY_ESC)
@@ -25,6 +28,9 @@ int	hook_key_pressed(int key, t_game *game)
 	return (0);
 }
 
+/*
+**	Press the window X hook. Used to exit the game.
+*/
 int	hook_press_x(t_game *game)
 {
 	game_quit(game);

@@ -6,12 +6,15 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/29 14:01:00 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/11 16:16:38 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/18 16:42:56 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/*
+**	Update the animation progress. The correct frame is selected.
+*/
 void	dino_update_animation(t_game *game, t_dino *dino)
 {
 	dino->ani_progress += dino->spr->ani_speed;
@@ -25,6 +28,10 @@ void	dino_update_animation(t_game *game, t_dino *dino)
 	}
 }
 
+/*
+**	Initialize the variables of the dino struct that has already been alloced.
+**	Also sets the initial coordinates of the dino/player.
+*/
 static void	dino_set_vars(t_game *game, t_dino *dino)
 {
 	dino->y = 0;
@@ -48,6 +55,9 @@ static void	dino_set_vars(t_game *game, t_dino *dino)
 	dino->steps = 0;
 }
 
+/*
+**	Allocate for the dino struct and set the variables.
+*/
 t_dino	*dino_create(t_game *game)
 {
 	t_dino	*dino;
@@ -59,6 +69,10 @@ t_dino	*dino_create(t_game *game)
 	return (dino);
 }
 
+/*
+**	Take the correct image/frame of the sprite and put it to the screen. Draw
+**	the amount of apples collected and steps taken.
+*/
 void	dino_put_to_screen(t_game *game, t_dino *dino)
 {
 	char	*str_apples;
@@ -79,6 +93,10 @@ void	dino_put_to_screen(t_game *game, t_dino *dino)
 	free(str_steps);
 }
 
+/*
+**	Move the dino by amount movex and movey. Also does a basic collision check
+**	for collectibles/apples and the exit. Gets called from the key press hook.
+*/
 void	dino_move(t_game *game, t_dino *dino, int movex, int movey)
 {
 	if (game->map->data[dino->y + movey][dino->x + movex] != MAP_WALL)

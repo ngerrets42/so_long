@@ -6,12 +6,15 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/06 20:21:31 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/11 16:14:54 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/18 16:50:54 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/*
+**	Update the screen buffer to display the background.
+*/
 void	game_update_map(t_game *game)
 {
 	mlx_destroy_image(game->mlx, game->screen_buf->img);
@@ -22,6 +25,9 @@ void	game_update_map(t_game *game)
 	game_draw_background(game);
 }
 
+/*
+**	Loop through and update all the enemies.
+*/
 void	game_update_enemies(t_game *game)
 {
 	t_list	*enemy;

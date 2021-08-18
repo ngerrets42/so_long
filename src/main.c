@@ -6,13 +6,16 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/23 12:10:19 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/11 16:04:35 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/18 17:05:31 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
 #include "so_long.h"
 
+/*
+**	Parse and return the map with given file-name.
+*/
 static t_map	*parse_map(char *fname)
 {
 	t_map	*map;
@@ -33,12 +36,15 @@ static t_map	*parse_map(char *fname)
 		if (map != NULL)
 			map_destroy(map);
 		else
-			put("Error\n- Couldn't parse the map. Check if the file exists.", NULL);
+			put(MSG_ERROR_BAD_MAP, NULL);
 		return (NULL);
 	}
 	return (map);
 }
 
+/*
+**	Apply all the hooks.
+*/
 static void	apply_hooks(t_game *game)
 {
 	mlx_loop_hook(game->mlx, game_loop, game);

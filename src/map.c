@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/23 11:41:18 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/11 16:06:17 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/18 17:01:17 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 #include <fcntl.h>
 #include <unistd.h>
 
+/*
+**	Allocate for the first line of the map.
+*/
 static void	map_first_line(t_map **map, char *line)
 {
 	(*map)->width = ft_strlen(line);
@@ -24,6 +27,9 @@ static void	map_first_line(t_map **map, char *line)
 	(*map)->data[0] = line;
 }
 
+/*
+**	Used to free map in case of error.
+*/
 static void	bad_map_free(t_map *map)
 {
 	int	i;
@@ -38,6 +44,9 @@ static void	bad_map_free(t_map *map)
 	free(map);
 }
 
+/*
+**	Add a line to the map.
+*/
 static void	map_add_line(t_map **map, char *line)
 {
 	char	**new_data;
@@ -65,6 +74,9 @@ static void	map_add_line(t_map **map, char *line)
 	(*map)->data = new_data;
 }
 
+/*
+**	Free the entire map.
+*/
 void	map_destroy(t_map *map)
 {
 	int	y;
@@ -79,6 +91,9 @@ void	map_destroy(t_map *map)
 	free(map);
 }
 
+/*
+**	Create a map from given file-name.
+*/
 t_map	*map_get_from_file(char *fname)
 {
 	int		fd;

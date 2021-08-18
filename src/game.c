@@ -6,13 +6,16 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/29 10:35:40 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/11 16:13:06 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/18 16:53:34 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "map.h"
 
+/*
+**	Loop through and free all the sprites.
+*/
 void	game_destroy_sprites(t_game *game)
 {
 	int	i;
@@ -35,6 +38,9 @@ void	game_destroy_sprites(t_game *game)
 	free(game->spr_list);
 }
 
+/*
+**	Free and exit.
+*/
 void	game_quit(t_game *game)
 {
 	if (game != NULL)
@@ -50,6 +56,9 @@ void	game_quit(t_game *game)
 	exit(0);
 }
 
+/*
+**	Draw the background: Map walls, exit and collectibles.
+*/
 void	game_draw_background(t_game *game)
 {
 	int		x;
@@ -79,6 +88,9 @@ void	game_draw_background(t_game *game)
 	}
 }
 
+/*
+**	Loop through and draw all the enemies.
+*/
 void	game_draw_enemies(t_game *game)
 {
 	t_list	*enemy;
@@ -96,6 +108,9 @@ void	game_draw_enemies(t_game *game)
 	}
 }
 
+/*
+**	Main game loop. Update animations, positions and draw the screen if necessary.
+*/
 int	game_loop(t_game *game)
 {
 	if (game->update)

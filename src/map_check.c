@@ -6,13 +6,16 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/29 11:23:08 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/11 16:03:45 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/18 16:59:50 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
 #include "str.h"
 
+/*
+**	Returns 1 if given character is a legal map-character.
+*/
 static int	map_char_islegal(char c)
 {
 	if (c == MAP_COLLECTIBLE || c == MAP_EMPTY || c == MAP_EXIT
@@ -22,6 +25,9 @@ static int	map_char_islegal(char c)
 	return (0);
 }
 
+/*
+**	Check if the player count == 1, exit count == 1 and if collectibles > 1
+*/
 static int	map_check_player_and_exit(t_map *map)
 {
 	int	player_count;
@@ -39,6 +45,9 @@ static int	map_check_player_and_exit(t_map *map)
 	return (1);
 }
 
+/*
+**	Check if map is surrounded by walls.
+*/
 static int	map_check_walls(t_map *map)
 {
 	int	x;
@@ -63,6 +72,9 @@ static int	map_check_walls(t_map *map)
 	return (1);
 }
 
+/*
+**	Check validity of map.
+*/
 int	map_check_map(t_map *map)
 {
 	int	x;
@@ -88,6 +100,9 @@ int	map_check_map(t_map *map)
 	return (1);
 }
 
+/*
+**	Count number of appearances of char c within the map.
+*/
 int	map_count(t_map *map, char c)
 {
 	int	y;
