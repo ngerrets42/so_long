@@ -6,14 +6,14 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/06 20:21:31 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/18 16:50:54 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/18 17:08:43 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 /*
-**	Update the screen buffer to display the background.
+**	Update the screen buffer to display the updated background.
 */
 void	game_update_map(t_game *game)
 {
