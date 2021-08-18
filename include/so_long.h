@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/23 11:24:55 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/18 17:06:03 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/18 17:26:32 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,6 @@
 # ifndef FPS_MULTIPLIER
 #  define FPS_MULTIPLIER 1
 # endif
-
-# define MSG_ERROR_NOT_INITIALIZED \
-	"Error\n- Couldn't initialize the game!"
-# define MSG_KILLED_BY_ENEMY \
-	"Oh no! You got eaten by an enemy dinosaur. Game Over!"
-# define MSG_ERROR_BAD_MALLOC \
-	"Error\n - Something went wrong while allocating memory, exiting..."
-# define MSG_ERROR_BAD_MAP \
-	"Error\n- Couldn't parse the map. Check if the file exists."
 
 # define SPR_DEFAULT_ANI_SPEED 0.001
 # define ENEMY_SPEED 0.0003

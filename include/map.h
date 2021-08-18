@@ -6,25 +6,14 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/23 11:40:41 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/11 16:06:24 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/18 17:24:29 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_H
 # define MAP_H
 
-# include "stddef.h"
-
-# define MSG_ERROR_REQUIRE_ESSENTIALS \
-	"Error\n- Map needs ONE player, ONE exit and 1+ apples."
-# define MSG_ERROR_BAD_WALLS \
-	"Error\n- Map needs to be surrounded by walls."
-# define MSG_ERROR_ILLEGAL_CHARS \
-	"Error\n- Illegal characters in map."
-# define MSG_ERROR_BAD_FILE_EXTENSION \
-	"Error\n- Bad file extension! Use .ber"
-# define MSG_ERROR_NOT_RECTANGLE_OR_BAD_MALLOC \
-	"Error\n- Map needs to be a rectangle. (or mem-err)"
+# include "stddef.h"	
 
 # define MAP_EMPTY '0'
 # define MAP_PLAYER 'P'

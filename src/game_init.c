@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/06 20:19:32 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/18 16:49:23 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/18 17:25:49 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_game	*game_initialize_mlx(t_map *map)
 			game_initialize_window(game, map);
 	}
 	if (game == NULL)
-		put(MSG_ERROR_NOT_INITIALIZED, NULL);
+		put("Error\n- Couldn't initialize the game!", NULL);
 	game->collectibles = map_count(map, MAP_COLLECTIBLE);
 	game_get(game);
 	return (game);
@@ -81,7 +81,7 @@ void	game_init_entities(t_game *game)
 	game->dino = dino_create(game);
 	if (game->dino == NULL)
 	{
-		put(MSG_ERROR_BAD_MALLOC, NULL);
+		put("Error\n - Bad malloc.", NULL);
 		exit(1);
 	}
 	game->enemies = enemies_create(game);

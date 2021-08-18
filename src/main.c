@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/23 12:10:19 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/18 17:05:31 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/18 17:26:16 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static t_map	*parse_map(char *fname)
 	if (i < 4 || fname[i - 1] != 'r' || fname[i - 2] != 'e'
 		|| fname[i - 3] != 'b' || fname[i - 4] != '.')
 	{
-		put(MSG_ERROR_BAD_FILE_EXTENSION, NULL);
+		put("Error\n- Bad file extension! Use .ber", NULL);
 		return (NULL);
 	}
 	map = map_get_from_file(fname);
@@ -36,7 +36,7 @@ static t_map	*parse_map(char *fname)
 		if (map != NULL)
 			map_destroy(map);
 		else
-			put(MSG_ERROR_BAD_MAP, NULL);
+			put("Error\n- Couldn't parse map. Check if the file exists.", NULL);
 		return (NULL);
 	}
 	return (map);

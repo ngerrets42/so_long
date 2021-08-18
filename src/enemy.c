@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/06 17:53:39 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/18 16:46:42 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/18 17:25:06 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ void	enemy_update(t_game *game, t_enemy *enemy)
 	enemy_animate(game, enemy);
 	if (game->dino->x == enemy->x && game->dino->y == enemy->y)
 	{
-		put(MSG_KILLED_BY_ENEMY, NULL);
+		put("Oh no! You got eaten by an enemy dinosaur. Game Over!", NULL);
 		game_quit(game);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/29 10:35:40 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/18 16:53:34 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/18 17:25:41 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	game_draw_enemies(t_game *game)
 	{
 		if (enemy->content == NULL)
 		{
-			put(MSG_ERROR_BAD_MALLOC, NULL);
+			put("Error\n - Bad malloc.", NULL);
 			exit(1);
 		}
 		enemy_draw(game, (t_enemy *)enemy->content);

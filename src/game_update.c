@@ -6,7 +6,7 @@
 /*   By: ngerrets <ngerrets@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/07/06 20:21:31 by ngerrets      #+#    #+#                 */
-/*   Updated: 2021/08/18 17:08:43 by ngerrets      ########   odam.nl         */
+/*   Updated: 2021/08/18 17:25:52 by ngerrets      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	game_update_enemies(t_game *game)
 	{
 		if (enemy->content == NULL)
 		{
-			put(MSG_ERROR_BAD_MALLOC, NULL);
+			put("Error\n - Bad malloc.", NULL);
 			exit(1);
 		}
 		enemy_update(game, (t_enemy *)enemy->content);
